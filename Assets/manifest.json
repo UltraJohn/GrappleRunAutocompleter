@@ -3,7 +3,7 @@
   "author": "UltraJohn",
   "version": "1.0.0",
   "description": "Automatically completes Grapple Run event. Does not skip the tutorial chambers.",
-  "nexus_id": "",
+  "nexus_id": "36",
   "donate_url": "",
-  "github_url": ""
+  "github_url": "https://github.com/UltraJohn/GrappleRunAutocompleter"
 }
