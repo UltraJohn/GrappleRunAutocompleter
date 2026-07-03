@@ -13,16 +13,20 @@ public class Plugin : MelonMod
 {
     internal static ConfigFile Config;
     internal static readonly MelonLogger.Instance Logger = Melon<Plugin>.Logger;
-    
-    public override void OnInitializeMelon()
+	internal static ModHelper ModHelperInstance;
+
+	public override void OnInitializeMelon()
     {
+        ModHelper.ModHelperMounted += SetModHelperInstance;
         Config = new(MyPluginInfo.PLUGIN_GUID);
         Logger.Msg($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
 
 		//new HarmonyLib.Harmony("Skip Grapple Run").PatchAll();
 	}
 
-    public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+	private static void SetModHelperInstance(ModHelper instance) => ModHelperInstance = instance;
+
+	public override void OnSceneWasLoaded(int buildIndex, string sceneName)
     {
         if (sceneName != "Game") return;
         ModUtils.RegisterComponent<GrappleRunAutocompleter>();
